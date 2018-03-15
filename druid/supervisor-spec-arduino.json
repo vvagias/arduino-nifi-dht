@@ -1,11 +1,11 @@
 {
   "type": "kafka",
   "dataSchema": {
-    "dataSource": "arduino-dht",
+    "dataSource": "arduino-dht-druid",
     "parser": {
       "type": "string",
       "parseSpec": {
-        "timestampSpec": { "column": "time", "format": "posix" },
+        "timestampSpec": { "column": "_timestamp", "format": "posix" },
         "dimensionsSpec": {
           "dimensions": ["humidity", "temperature"]
         },
@@ -30,7 +30,7 @@
     "maxRowsPerSegment": 5000000
   },
   "ioConfig": {
-    "topic": "arduino-dht",
+    "topic": "arduino-dht-druid",
     "consumerProperties": {
       "bootstrap.servers": "edwdemo1.field.hortonworks.com:6667"
     },
