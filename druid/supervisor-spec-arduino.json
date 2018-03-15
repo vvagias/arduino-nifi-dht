@@ -13,6 +13,7 @@
       }
     },
     "metricsSpec": [
+      {"type": "count", "name": "count" },
       { "type": "doubleMax", "name": "humidity_max", "fieldName": "humidity" },
       { "type": "doubleMin", "name": "humidity_min", "fieldName": "humidity" },
       { "type": "doubleMax", "name": "temperature_max", "fieldName": "temperature" },
