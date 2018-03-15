@@ -1,0 +1,41 @@
+{
+  "type": "kafka",
+  "dataSchema": {
+    "dataSource": "arduino-dht-druid",
+    "parser": {
+      "type": "string",
+      "parseSpec": {
+        "timestampSpec": { "column": "_timestamp", "format": "posix" },
+        "dimensionsSpec": {
+          "dimensions": ["humidity", "temperature"]
+        },
+        "format": "json"
+      }
+    },
+    "metricsSpec": [
+      {"type": "count", "name": "count" },
+      { "type": "doubleMax", "name": "humidity_max", "fieldName": "humidity" },
+      { "type": "doubleMin", "name": "humidity_min", "fieldName": "humidity" },
+      { "type": "doubleMax", "name": "temperature_max", "fieldName": "temperature" },
+      { "type": "doubleMin", "name": "temperature_min", "fieldName": "temperature" }
+    ],
+    "granularitySpec": {
+      "type": "uniform",
+      "segmentGranularity": "hour",
+      "queryGranularity": "none"
+    }
+  },
+  "tuningConfig": {
+    "type": "kafka",
+    "maxRowsPerSegment": 5000000
+  },
+  "ioConfig": {
+    "topic": "arduino-dht-druid",
+    "consumerProperties": {
+      "bootstrap.servers": "edwdemo1.field.hortonworks.com:6667"
+    },
+    "taskCount": 1,
+    "replicas": 1,
+    "taskDuration": "PT60S"
+  }
+}
