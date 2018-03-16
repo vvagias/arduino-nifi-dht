@@ -7,7 +7,7 @@
       "parseSpec": {
         "timestampSpec": { "column": "_timestamp", "format": "posix" },
         "dimensionsSpec": {
-          "dimensions": ["humidity", "temperature"]
+          "dimensions": ["humidity","time","temperature"]
         },
         "format": "json"
       }
